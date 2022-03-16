@@ -12,9 +12,9 @@ func TestStackChannelDead(t *testing.T) {
 	fmt.Println("通道长度:", len(cNumbs))
 	var wg sync.WaitGroup
 	wg.Add(1)
-	go func(){
+	go func() {
 		defer wg.Done()
-		for{
+		for {
 			fmt.Println("开始读取")
 			select {
 			case b := <-cNumbs:
@@ -23,5 +23,5 @@ func TestStackChannelDead(t *testing.T) {
 		}
 	}()
 	wg.Wait()
-// 	mail.zyzb.com
+	// 	mail.zyzb.com
 }

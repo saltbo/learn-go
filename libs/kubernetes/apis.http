@@ -1,0 +1,11 @@
+###
+GET https://120.48.12.171:6443/version
+
+###
+GET https://120.48.12.171:6443/openapi/v2
+Authorization: Bearer {{token}}
+
+###
+GET https://120.48.12.171:6443/apis
+Authorization: Bearer {{token}}
+
