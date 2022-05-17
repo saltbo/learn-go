@@ -1,28 +1,38 @@
 syntax = "proto3";
+
 package api;
-option go_package = "grpc/api";
+
 import "google/protobuf/empty.proto";
 
+option go_package = "grpc/api";
+
 service RsLocald {
-  rpc Login(LoginBody) returns (LoginReply);
-  rpc Listen(stream ProxyResponse) returns (stream ProxyRequest);
-  rpc SendResponse (ProxyResponse) returns (google.protobuf.Empty);
+    rpc Login (LoginBody) returns (LoginReply);
+    rpc Listen (stream ProxyResponse) returns (stream ProxyRequest);
+    rpc SendResponse (ProxyResponse) returns (google.protobuf.Empty);
 }
 
 message LoginBody {
-  string token = 1;
+    string token = 1;
 }
 
 message LoginReply {
-  string endpoint = 1;
+    string endpoint = 1;
 }
 
 message ProxyRequest {
-  string reqId = 1;
-  bytes data = 2;
+    string reqId = 1;
+    bytes data = 2;
 }
 
 message ProxyResponse {
-  string reqId = 1;
-  bytes data = 2;
+    string reqId = 1;
+    bytes data = 2;
+    Protocol protocol = 3;
+}
+
+enum Protocol {
+    HTTP = 0;
+    TCP = 1;
+    UDP = 2;
 }
